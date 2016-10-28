@@ -1,7 +1,7 @@
 # projetGymkhana
 
 ##Presentation
-Bonjour et bienvenue sur notre GitHub. Ce projet est un travail d'école réalisé par des étudiants. Nous avons donc un tuteur qui a définit notre sujet, qui note notre travail et aupres duquel nous avons un rendu de notre travail a présenter régulierement.
+Bonjour et bienvenue sur ma Branche. Je suis un petit gallopin qui aimes bien coder.
 
 ###But
 Réaliser une version ordinateur du gymkhana en réalisant un joueur artificiel contre lequel le joueur pourra jouer
