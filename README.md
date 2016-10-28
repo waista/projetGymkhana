@@ -3,10 +3,10 @@
 ##Presentation
 Bonjour et bienvenue sur notre GitHub. Ce projet est un travail d'école réalisé par des étudiants. Nous avons donc un tuteur qui a définit notre sujet, qui note notre travail et aupres duquel nous avons un rendu de notre travail a présenter régulierement.
 
-###but:
+###But
 Réaliser une version ordinateur du gymkhana en réalisant un joueur artificiel contre lequel le joueur pourra jouer
 
-###Regles du jeu :
+###Regles du jeu
 Contenu de la boîte. 
 	1.  Un  plateau  quadrillé  par  des  plots  rouges  et  blancs disposés en cinq rangées symétriques de chaque couleur. 
 	2. 21 pièces octogonales blanches.  
