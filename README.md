@@ -1,6 +1,7 @@
 # projetGymkhana
 
 ##Presentation
+Bonjour et bienvenue sur notre GitHub. Ce projet est un travail d'école réalisé par des étudiants. Nous avons donc un tuteur qui a définit notre sujet, qui note notre travail et aupres duquel nous avons un rendu de notre travail a présenter régulierement.
 
 ###but:
 Réaliser une version ordinateur du gymkhana en réalisant un joueur artificiel contre lequel le joueur pourra jouer
@@ -27,5 +28,9 @@ relier  deux  plots  de  même  couleur.  Aucune  pièce  ne doit être position
 sont assis. 
 6. Les joueurs ne sont pas obligés de poser leurs pièces à côté de celles déjà placées sur le plateau
 
-
+Définitions. 
+Faire  une ”ligne” ou  faire  une  ”connexion”  signifie  tracer une ligne continue avec des pièces de la même couleur à 
+partir  d’un  bord  du  plateau,  jusqu’aux  plots  de  même couleur,  situés  à  l’opposé.  La  ligne  peut  être  droite  ou 
+brisée, avec ou sans ramifications. 
+Un ”encerclement” signifie   entourer   un   plot   ou   un ensemble de pièces adverses avec ses propres pièces. 
  
