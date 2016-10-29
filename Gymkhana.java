@@ -94,7 +94,25 @@ Class Gymkhana{
 		}
 	}
 
+	/*
+	---------------------------------------------------------------------------------------------------------------------------
+													Fonctions d'interface utilisateur
+	---------------------------------------------------------------------------------------------------------------------------
+	*/
 
+
+
+	public void testRecupDonnee(){
+	       System.out.println("Entrez vos valeurs : ");
+
+	       String sWhatever;
+
+	       Scanner scanIn = new Scanner(System.in);
+	       sWhatever = scanIn.nextLine();
+
+	       scanIn.close();            
+	       System.out.println(sWhatever);
+	}
 
 
 	/*
