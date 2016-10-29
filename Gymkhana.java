@@ -89,6 +89,8 @@ Class Gymkhana{
 		if (!verifPionExisteSurCase(x,y)) {
 			System.out.println("Un pion a déja été joué sur cette case, veuillez réessayer avec une autre case");
 			return false;
+		}else{
+			return true;
 		}
 	}
 
