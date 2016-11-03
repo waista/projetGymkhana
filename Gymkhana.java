@@ -1,6 +1,6 @@
-import java.util.*
+import java.util.*;
 
-Class Gymkhana{
+class Gymkhana{
 		/*
 	---------------------------------------------------------------------------------------------------------------------------
 													Attributs
@@ -27,7 +27,7 @@ Class Gymkhana{
 		//-2 correspond a une case interdite
 		//on initialise tout le tableau en vide
 		for (int i= 0 ;i <2*this.taille-1 ;i++ ) {
-			for (int j = 0;this.taille; ) {
+			for (int j = 0;j <this.taille; ) {
 				if (i%2==1) {//une colonne sur deux comprend taille cases et les autres comprennent taille-1 cases
 							 //on définit donc certaines valeurs du tableau comme interdite
 					plateau[i][j] = -2;
