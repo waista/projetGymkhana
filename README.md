@@ -1,3 +1,5 @@
+##attention cette version n'est pas a jour, si vous voulez la version a jour demandez moi de rajouter les modifs
+
 # projetGymkhana
 
 ##Presentation
