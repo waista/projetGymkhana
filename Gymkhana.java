@@ -9,10 +9,10 @@ class Gymkhana{
 													Attributs
 	---------------------------------------------------------------------------------------------------------------------------
 	*/
-	// un attribut tableau qui represente tous les pions placÃ©s au cours de la partie
+	// un attribut tableau qui represente tous les pions placés au cours de la partie
 	private int[][] plateau;
-	private static int taille = 5; //en prÃ©vision de futures fonctionnalitÃ©s : pour changer la taille du plateau
-	//remarque vu la disposition du plateau, on le reprÃ©senteras par un tableau de taille int [2*taille-1][taille]
+	private static int taille = 5; //en prévision de futures fonctionnalités : pour changer la taille du plateau
+	//remarque vu la disposition du plateau, on le représenteras par un tableau de taille int [2*taille-1][taille]
 
 
 	/*
@@ -23,8 +23,8 @@ class Gymkhana{
 	//notre constructeur
 	public Gymkhana(){
 		plateau = new int[2*this.taille-1][this.taille];
-		//proposition : pour chaque case utiliser un systeme d'un entier unique pour reprÃ©senter le joueur et le sens
-		//0 et 1 correspondent au joueur un donc 2 et 3 correspondent au joueur deux (infÃ©rieur ou supÃ©rieur a 2)
+		//proposition : pour chaque case utiliser un systeme d'un entier unique pour représenter le joueur et le sens
+		//0 et 1 correspondent au joueur un donc 2 et 3 correspondent au joueur deux (inférieur ou supérieur a 2)
 		// pour le sens du pion on utilise pair ou impair
 		//-1 correspond a une case vide.
 		//-2 correspond a une case interdite
@@ -32,7 +32,7 @@ class Gymkhana{
 		for (int i= 0 ;i <2*this.taille-1 ;i++ ) {
 			for (int j = 0;j <this.taille;j++ ) {
 				if (i%2==1 && j == 0 ) {//une colonne sur deux comprend taille cases et les autres comprennent taille-1 cases
-							 //on dÃ©finit donc certaines valeurs du tableau comme interdite
+							 //on définit donc certaines valeurs du tableau comme interdite
 					plateau[i][j] = -2;
 				}else{
 					plateau[i][j] = -1;
@@ -44,13 +44,13 @@ class Gymkhana{
 
 	/*
 	---------------------------------------------------------------------------------------------------------------------------
-													Fonctions de vÃ©rification
+													Fonctions de vérification
 	---------------------------------------------------------------------------------------------------------------------------
 	*/
 
 	public boolean verifPionExisteSurCase(int x, int y){
-		//fonction qui vÃ©rifie si le pion qui va etre placÃ© ne joue pas sur un pion dÃ©ja existant
-		//renvoie vrai si un pion n'est pas dÃ©ja a la case demandÃ©e et faux sinon
+		//fonction qui vérifie si le pion qui va etre placé ne joue pas sur un pion déja existant
+		//renvoie vrai si un pion n'est pas déja a la case demandée et faux sinon
 		if (this.plateau[x][y] != -1) {
 			return false;
 		}else{
@@ -59,7 +59,7 @@ class Gymkhana{
 	}
 
 	public boolean verifPionDansTableau(int x, int y){
-		//fonction qui vÃ©rifie si le pion qui va etre placÃ© ne joue pas en dehors du plateau
+		//fonction qui vérifie si le pion qui va etre placé ne joue pas en dehors du plateau
 		//renvoie vrai si pion dans tableau et faux si en dehors du tableau
 		if (x < 0 || y < 0) {
 			return false;
@@ -72,7 +72,7 @@ class Gymkhana{
 	}
 
 	public boolean verifPionDansPlateau(int x, int y){
-		//fonction qui vÃ©rifie si le pion qui va etre placÃ© correspond a une case authorisÃ©e
+		//fonction qui vérifie si le pion qui va etre placé correspond a une case authorisée
 		if (plateau[x][y]==-2) {
 			return false;
 		}else{
@@ -82,19 +82,33 @@ class Gymkhana{
 
 	public boolean gestionDesVerifs(int x, int y){
 		if (!verifPionDansTableau(x,y)) {
-			System.out.println("La case demandÃ©e ne se trouve pas dans le tableau, veuillez rÃ©essayer avec une case valide");
+			System.out.println("La case demandée ne se trouve pas dans le tableau, veuillez réessayer avec une case valide");
 			return false;
 		}
 		if (!verifPionDansPlateau(x,y)) {
-			System.out.println("La case demandÃ©e ne se trouve pas dans le plateau, veuillez rÃ©essayer avec une case valide");
+			System.out.println("La case demandée ne se trouve pas dans le plateau, veuillez réessayer avec une case valide");
 			return false;
 		}
 		if (!verifPionExisteSurCase(x,y)) {
-			System.out.println("Un pion a dÃ©ja Ã©tÃ© jouÃ© sur cette case, veuillez rÃ©essayer avec une autre case");
+			System.out.println("Un pion a déja été joué sur cette case, veuillez réessayer avec une autre case");
 			return false;
 		}else{
 			return true;
 		}
+	}
+
+//--------------------------------------verifs de fin du jeu--------------------------------------------------------
+
+	public boolean plateauRempli(){
+		//fonction qui renvoie vrai si le plateau ne permet pas de jouer de pion supplémentaire et faux sinon
+		for (int i= 0 ;i <2*this.taille-1 ;i++ ) {
+			for (int j = 0;j <this.taille;j++ ) {
+				if (plateau[i][j]==-1) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	/*
@@ -106,10 +120,10 @@ class Gymkhana{
 
 
 	public void testRecupDonnee(){
-		// Je l'avoue cette fonction est un gros copiÃ© collÃ© d'internet.
-		//en ma dÃ©fense faire un scanf en java est Ã©tonnemment compliquÃ© 
-		//et je comptes faire un systeme diffÃ©rent et graphique plus tard 
-		//tout crÃ©dit revient a http://www.mkyong.com/java/how-to-read-input-from-console-java
+		// Je l'avoue cette fonction est un gros copié collé d'internet.
+		//en ma défense faire un scanf en java est étonnemment compliqué 
+		//et je comptes faire un systeme différent et graphique plus tard 
+		//tout crédit revient a http://www.mkyong.com/java/how-to-read-input-from-console-java
 		//cette fonction permet de tester la lecture depuis une console
 
 
@@ -148,12 +162,12 @@ class Gymkhana{
 
 
 	public int[] recupDonnee(int joueur){
-		//fonction qui renvoie un tableau a trois cases : x et y les coordonnÃ©es du pion a placer et z le sens du pion
+		//fonction qui renvoie un tableau a trois cases : x et y les coordonnées du pion a placer et z le sens du pion
 		//recuperes les valeurs depuis la ligne de commande
-		// je me suis donc basÃ© sur la fonction de test
+		// je me suis donc basé sur la fonction de test
+		//petite remarque cette fonction utilises des librairies du JDK1.6, votre version de java doit donc bien etre a jour
 
-
-		//ne pas oublier de vÃ©rifier les valeurs entrees (bien trois entiers) et z bien o ou 1
+		//ne pas oublier de vérifier les valeurs entrees (bien trois entiers) et z bien o ou 1
 		System.out.println("Vous pouvez entrer 'q' pour sortir");
 
 		int[] donnes = new int[3];
@@ -169,11 +183,11 @@ class Gymkhana{
 		}
 
 		while (cpt < 3) {
-			if (cpt ==0) {
+			if (cpt ==1) {
 				System.out.print("Veuillez entrer la coordonne x de votre case : "); // on pourrais faire nos verifs au niveau utilisateur pour l'input
 			}
 
-			if (cpt ==1) {
+			if (cpt ==0) {
 				System.out.print("Veuillez maintenant entrer la coordonne y de votre case : ");
 			}
 
@@ -190,7 +204,8 @@ class Gymkhana{
 			}
 
 			try {
-			      donnes[cpt] = Integer.parseInt(input);
+			    donnes[cpt] = Integer.parseInt(input);//Je me suis trompé dans l'ordre
+
 			} catch (NumberFormatException e) {
 			      System.out.println("Ce que vous venez d'entrer n'est pas un entier. Essayez encore");
 			      cpt--;// dans ce cas on n'avance pas au prochain stade
@@ -207,12 +222,12 @@ class Gymkhana{
 
 	/*
 	---------------------------------------------------------------------------------------------------------------------------
-													Fonctions gÃ©nÃ©rales du systeme de jeu
+													Fonctions générales du systeme de jeu
 	---------------------------------------------------------------------------------------------------------------------------
 	*/
 
 	public int entierASauvgarder(int joueur, int sens){
-		//fonction qui renvoie l'entier a enregistrer dans le plateau dÃ©pendant du sens du pion et du joueur qui le place
+		//fonction qui renvoie l'entier a enregistrer dans le plateau dépendant du sens du pion et du joueur qui le place
 		//le joueur doit etre 1 ou 2 et le sens doit etre o ou 1
 		int x = 0;
 		if (joueur ==2) {
@@ -226,7 +241,7 @@ class Gymkhana{
 
 	public int[] unTour(int joueur){
 		//fonction qui geres le tour d'un joueur dans la partie
-		//renvoie les donnees du pion jouÃ© par le joueur pendant le tour
+		//renvoie les donnees du pion joué par le joueur pendant le tour
 
 		boolean verif = false;
 		int[] donnes = new int[3];
@@ -244,10 +259,10 @@ class Gymkhana{
 	}
 
 	public void jeu(){
-		//fonction qui geres le dÃ©roulement du jeu en son entieretÃ©
+		//fonction qui geres le déroulement du jeu en son entiereté
 		System.out.println("Bonjour et bienvenu au magnifique jeu du Gymkhana !");
 		System.out.println("Petite remarque : cette version du jeu est encore en alpha, n'en attendez pas trop");
-		int finDuJeu = 0;//0 : partie en cours; 1:joueur 1 a gagnÃ©; 2:joueur 2 a gagnÃ©; 3 : Ã©galitÃ©
+		int finDuJeu = 0;//0 : partie en cours; 1:joueur 1 a gagné; 2:joueur 2 a gagné; 3 : égalité
 		int cpt = 1;
 		int[] donnes = new int[3];
 		int joueur = 1;
@@ -263,6 +278,11 @@ class Gymkhana{
 			}
 			cpt++;
 			joueur = cpt%2 + 1;
+		}
+		if (finDuJeu == 3) {
+			System.out.println("égalité, vous etes tous les deux aussi nul l'un que l'autre");
+		}else{
+			System.out.println("Bravo joueur "+finDuJeu+" vous avez gagné !");
 		}
 
 
@@ -288,18 +308,13 @@ class Gymkhana{
 
 	/*
 	---------------------------------------------------------------------------------------------------------------------------
-													Fonctions a rÃ©aliser
+													Fonctions a réaliser
 	---------------------------------------------------------------------------------------------------------------------------
 	*/
 
 	public boolean aGagne(int[] donnes){
-		//fonction qui renvoie vrai si le dernier pion placÃ© rÃ©alise une ligne d'un cotÃ© a l'autre du plateau et faux sinon
+		//fonction qui renvoie vrai si le dernier pion placé réalise une ligne d'un coté a l'autre du plateau et faux sinon
 
-		return false;
-	}
-
-	public boolean plateauRempli(){
-		//fonction qui renvoie vrai si le plateau ne permet pas de jouer de pion supplÃ©mentaire et faux sinon
 		return false;
 	}
 
@@ -321,5 +336,4 @@ class Gymkhana{
 
 //liste de choses a faire :
 // fonction aGagne
-// fonction plateauRempli
-//fini recupDonne
+//refaire modele, refaire une classe pion (nos aretes) et une classe LesPetitsCarresRougesEtBlancs (les noeuds)
