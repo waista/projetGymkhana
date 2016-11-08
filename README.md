@@ -8,6 +8,9 @@ Bonjour et bienvenue sur notre GitHub. Ce projet est un travail d'école réalis
 ###But
 Réaliser une version ordinateur du gymkhana en réalisant un joueur artificiel contre lequel le joueur pourra jouer
 
+###Objectifs
+Dans un premier temps, nous allons créer les bases de l'algorythme. 
+
 ###Regles du jeu
 Contenu de la boîte. 
 	1.  Un  plateau  quadrillé  par  des  plots  rouges  et  blancs disposés en cinq rangées symétriques de chaque couleur. 
