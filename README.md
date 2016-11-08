@@ -16,7 +16,7 @@ Contenu de la boîte.
 	4. Une  règle  du  jeu  et  un  récapitulatif  des  différentes 
   
 Pour  gagner,  il  faut  être  le  premier  à  établir  une ligne continue  avec  sa  couleur,  d’un  bord  à  l’autre  du  plateau,en  reliant  les  plots  entre  eux.  Très  vite,  il  faut mettre  en place une stratégie pour défier les attaques de l’adversaire qui  fera  tout  pour  empêcher  la  ligne  de  se  créer.
-Le  deuxième  type  de  stratégie  à  utiliser  pour  gagner consiste à encercler un ou plusieurs plots de l’adversaire.
+Le  deuxième  type  de  stratégie  à  utiliser  pour  gagner consiste à encercler un ou plusieurs plots de l’adversaire. (Nous ne traiterons pas celle-ci pour le moment)
 
 deroulement d'une partie:
 La durée moyenne d’une partie est de 5 minutes.  
