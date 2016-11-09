@@ -59,7 +59,7 @@ Probablement le modele le plus simple et le plus correspondant au plateau réel
 inconvenients
 Il demande quand meme une certaine quantité d'espace memoire et un systeme pour verifier le gagnant plutot complexe
 
-###model classes de connéxités
+###Modele classes de connéxités
 Le dernier modele n'est pas indépendant. C'est un systeme qui ne représentes pas du tout le plateau réel et ne permet donc pas de l'afficher. Il faut donc l'utiliser en jointure avec un des deux autres.
 Le principe est assez mathématique: il voudrait définir les ensembles de pions reliés comme des classes de connéxités.
 Avantages:
@@ -103,13 +103,13 @@ Avant d'avoir une vraie interphace graphique, on va juste afficher notre tableau
 
 Si on a la fois on le representeras de maniere jolie.
 
-###fonctions pour une interface graphique
+###Fonctions pour une interface graphique
 
 ??
 Nous n'avons pas encore vus comment gerer une interface graphique, nous nous occuperons de ceci plus tard
 
 
-###fonctions pour notre IA
+###Fonctions pour notre IA
 En tout premier, quelque chose de simple : Une IA qui choisie de maniere completement aléatoire ses coups.
 
 Ensuite il faudra faire plus de recherches sur le fonctionnement de l'algorithme minimaxi pour avancer.
