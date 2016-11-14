@@ -46,13 +46,13 @@ Alors notre commanditaire nous l'a demandé, le voila :
 Un petit cahier des charges.
 
 ##plusieurs modeles possible:
-###Modele aretes uniquement
-Un modele basé uniquement sur des aretes. Le principe de ce modele est simple. Vu que les utilisateurs ne font que rajouter des pions. Le systeme n'enregistre que les pions. Pour retranscrire tout le plateau le systeme va simuler des noeuds artificiels en utilisant les pions comme aretes d'un graphe en maths.
+###Modele arêtes uniquement
+Un modele basé uniquement sur des arêtes. Le principe de ce modele est simple. Vu que les utilisateurs ne font que rajouter des pions. Le systeme n'enregistre que les pions. Pour retranscrire tout le plateau le systeme va simuler des noeuds artificiels en utilisant les pions comme aretes d'un graphe en maths.
 Avantages de ce modele : on utilise peu de memoire. Au final on enregistre que le necessaire absolu.
 Inconvenient : Pose certains problemes au systeme : Pour gérer l'interaction, le plateau doit quand meme etre simulé ce qui peut demander plus de ressources.
 Un autre gros inconvénient c'est que le plateau enregistré ne correspond pas au plateau réel. L'affichage est donc bien moche et un systeme pour redécaler les cases est necessaire pour avoir un plateau a peu pres jouable.
 
-###Modele tableau aretes et noeuds
+###Modele tableau arêtes et noeuds
 Le deuxieme modele possible serait de tout enregistrer. Faire un gros tableau avec les plots et les pions joués par les utilisateurs. 
 avantages:
 Probablement le modele le plus simple et le plus correspondant au plateau réel
