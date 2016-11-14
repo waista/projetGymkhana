@@ -47,7 +47,7 @@ Un petit cahier des charges.
 
 ##plusieurs modeles possible:
 ###Modele arêtes uniquement
-Un modele basé uniquement sur des arêtes. Le principe de ce modele est simple. Vu que les utilisateurs ne font que rajouter des pions. Le systeme n'enregistre que les pions. Pour retranscrire tout le plateau le systeme va simuler des noeuds artificiels en utilisant les pions comme aretes d'un graphe en maths.
+Un modele basé uniquement sur des arêtes. Le principe de ce modele est simple. Vu que les utilisateurs ne font que rajouter des pions. Le systeme n'enregistre que les pions. Pour retranscrire tout le plateau le systeme va simuler des noeuds artificiels en utilisant les pions comme arêtes d'un graphe en maths.
 Avantages de ce modele : on utilise peu de memoire. Au final on enregistre que le necessaire absolu.
 Inconvenient : Pose certains problemes au systeme : Pour gérer l'interaction, le plateau doit quand meme etre simulé ce qui peut demander plus de ressources.
 Un autre gros inconvénient c'est que le plateau enregistré ne correspond pas au plateau réel. L'affichage est donc bien moche et un systeme pour redécaler les cases est necessaire pour avoir un plateau a peu pres jouable.
@@ -69,7 +69,7 @@ Ce n'est pas independant. Il faut donc quand meme un autre systeme pour enregist
 
 
 ##Fonctions a réaliser:
-Nous avons décidés d'utilser le modele enregistrant des Aretes uniquement.
+Nous avons décidés d'utilser le modele enregistrant des Arêtes uniquement.
 Le code du Gymkhana sera donc divisé en plusieurs parties qui auront chacune une series de fonctions :
 
 ###Tout d'abord les verifications
