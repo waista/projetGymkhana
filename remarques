@@ -1,0 +1,9 @@
+juste un petit memo pour plus tard
+Pour les bibliotheques graphiques plusieurs possibilitées :
+QT, une bibliotheque pour C++ a la base, qui peut etre transposée sur java.
+Java FX, fonctionnes bien avec Swing, possible de réaliser un version web a travers. Utilises JDK apres la version 7
+Slick, bibliotheque basée sur LWJGL, faite pour réaliser des jeux 2d
+Swing ou AWT, intégrées dans les anciennes versions du JDK, sont accusées d'etre plutot lentes actuellement
+java2d une autre petite bibliotheque simple pour faire des images
+
+Actuellement j'hesite entre slick et java2d
