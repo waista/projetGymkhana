@@ -1,40 +1,27 @@
 import java.util.*;
 
 class Arete extends Case{
-	private Noeud noeud1;//chaque arete relie deux noeuds, qui pointe chacune sur 3 aretes
-	private Noeud noeud2;
-
-	private int joueur;// joueur peut etre 1, 2 ou -1. Avec -1 etant une case vide
-	private int estSurLeBord;//0 n'est pas sur un bord, 1 est sur le bord 1, 2 est sur le bord 2
-
+	private Case noeud1;//chaque arete relie deux noeuds, qui pointe chacune sur 3 aretes
+	private Case noeud2; //possiblement non necessaire
 
 	public Arete(){
 
 		super();
 
-		Noeud noeud1;//chaque arete relie deux noeuds, qui pointe chacune sur 3 aretes
-		Noeud noeud2;
+		Case noeud1;//chaque arete relie deux noeuds, qui pointe chacune sur 3 aretes
+		Case noeud2;
 
-		int joueur;// joueur peut etre 1, 2 ou 0. Avec 0 etant une case vide
-		int estSurLeBord;
 	}
-
 
 	public Arete(int x, int y, int j, Gymkhana jeu){//x et y coordonneés, j le joueur et jeu le plateau dans lequel il doit etre placé
-		super(x,y);
-		joueur = j;
+		super(x,y,j);
 	}
 
-	public boolean caseVide(){
-		if (joueur == -1) {
-			return true;
-		}else{
-			return false;
-		}
-	}
-
-	public int getJoueur(){
-		return joueur;
+	public Arete(int x, int y, int j, Case n1, Case n2, Gymkhana jeu){//x et y coordonneés, j le joueur et jeu le plateau dans lequel il doit etre placé
+		super(x,y,j);
+		noeud1 = n1;
+		noeud2 = n2;
+		// a finir
 	}
 
 	public int estSurLeCote(int x, int y, int j){
@@ -62,13 +49,19 @@ class Arete extends Case{
 													Fonctions utilitaires
 	---------------------------------------------------------------------------------------------------------------------------
 	*/
-	public void afficherJoueurArete(){
-		System.out.print(joueur);
-	}
 
 	public String toString(){
-		return String.valueOf(joueur);
+		if (joueur == 0) {
+			return ".";
+		}else{
+			return String.valueOf(joueur);
+		}
 	}
+
+	public boolean jeSuisUnNoeud(){
+		return false;
+	}
+
 
 
 }
