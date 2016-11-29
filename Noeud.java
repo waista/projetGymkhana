@@ -1,20 +1,27 @@
 import java.util.*;
 
-class Noeud{
-	private Arete arete1;
-	private Arete arete2;
-	private Arete arete3;
-	private Arete arete4;
+class Noeud extends Case {
+
+	private ClassesConnexite maClasse;
 
 	public Noeud(){
-
 	}
-	public Noeud(Arete monArete){
 
+	public Noeud(int x, int y,int j, ClassesConnexite cl){
+		super(x,y,j);
+		maClasse =	cl;
 	}
 
 	public String toString(){
-		return "*";
+		if (super.getJoueur() == 1) {
+			return "R";
+		}else{
+			return "b";
+		}
+	}
+
+	public boolean jeSuisUnNoeud(){
+		return true;
 	}
 
 }
