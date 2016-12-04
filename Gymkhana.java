@@ -52,11 +52,17 @@ class Gymkhana{
 						cpt++;
 					}
 					if(i%2==1 && j%2==0 ){
-						plateau[i][j] = new Noeud(j,i,1,tmp);
+						Case maCaseTmp = new Case(j,i,2,tmp);
+						tmp.rajoutCase(maCaseTmp);
+						plateau[i][j] = maCaseTmp;
 					}else if(i%2==0 && j%2==1 ){ 
-						plateau[i][j] = new Noeud(j,i,2,tmp);
+						Case maCaseTmp = new Case(j,i,1,tmp);
+						tmp.rajoutCase(maCaseTmp);
+						plateau[i][j] = maCaseTmp;
 					}else{
-						plateau[i][j] = new Arete(i,j, 0, this);//un joueur -1 définit une case vide
+						Case maCaseTmp = new Arete(i,j, 0, this);
+						tmp.rajoutCase(maCaseTmp);
+						plateau[i][j] = maCaseTmp;
 					}
 				}
 			}
@@ -152,36 +158,12 @@ class Gymkhana{
 		//fonction qui renvoie vrai si le dernier pion placé réalise une ligne d'un coté a l'autre du plateau et faux sinon
 		//strategie : verifier que les noeuds que l'arete relie appartiennent a la meme classe de connexite
 
-		// if(){
-			
-		// }
+		if(monArete.getCl1() == monArete.getCl2()){//si on rejoint la meme classe de connexité
+			return true;// on gagné
+		}
 
 		return false;
 	}
-
-	/*
-	---------------------------------------------------------------------------------------------------------------------------
-													Fonctions de création d'Case
-	---------------------------------------------------------------------------------------------------------------------------
-	*/
-
-	public int getSens(int x, int j){
-		if (j == 1) {
-			if (x%2==0) {
-				return 2;
-			}else{
-				return 1;
-			}
-		}else{
-			if (x%2==0) {
-				return 1;
-			}else{
-				return 2;
-			}
-		}
-	}
-
-
 
 	/*
 	---------------------------------------------------------------------------------------------------------------------------
@@ -189,7 +171,7 @@ class Gymkhana{
 	---------------------------------------------------------------------------------------------------------------------------
 	*/
 	public int[] recupDonnee(int joueur){
-		//fonction qui renvoie un tableau a trois cases : x et y les coordonnées du pion a placer et z le sens du pion
+		//fonction qui renvoie un tableau a deux cases : x et y les coordonnées du pion a placer
 		//recuperes les valeurs depuis la ligne de commande
 		// je me suis donc basé sur la fonction de test
 		//petite remarque cette fonction utilises des librairies du JDK1.6, votre version de java doit donc bien etre a jour
@@ -248,21 +230,6 @@ class Gymkhana{
 													Fonctions générales du systeme de jeu
 	---------------------------------------------------------------------------------------------------------------------------
 	*/
-	//fonction obsolete
-
-	// public int entierASauvgarder(int joueur, int sens){
-	// 	//fonction qui renvoie l'entier a enregistrer dans le plateau dépendant du sens du pion et du joueur qui le place
-	// 	//le joueur doit etre 1 ou 2 et le sens doit etre o ou 1
-	// 	int x = 0;
-	// 	if (joueur ==2) {
-	// 		x +=2;
-	// 	}
-	// 	if (sens == 1) {
-	// 		x++;
-	// 	}
-	// 	return x;
-	// }
-
 
 	public boolean unTour(int joueur){
 		//fonction qui geres le tour d'un joueur dans la partie
@@ -278,13 +245,21 @@ class Gymkhana{
 
 
 		Case[] mesNoeuds = trouverVoisins(joueur, donnes[0], donnes[1]);
-		monArete = new Arete(donnes[0], donnes[1], joueur,mesNoeuds[0], mesNoeuds[1], this);
+		monArete = new Arete(donnes[0], donnes[1], joueur, mesNoeuds[0], mesNoeuds[1], this);
 
 
-		monArete.afficherJoueur();
-		this.plateau[monArete.getCoordx()][monArete.getCoordy()] = monArete;
+		if (aGagne(monArete)) {
+			return true;
+		}else{
+			System.out.println("arete : " + monArete.getClasseConnexite());
+			monArete.setClasse(jointureClassesConnexite(monArete));
 
-		return false;
+			System.out.println("arete : " + monArete.getClasseConnexite());
+
+
+			this.plateau[monArete.getCoordx()][monArete.getCoordy()] = monArete;
+			return false;
+		}
 	}
 
 	public void jeu(){
@@ -299,6 +274,7 @@ class Gymkhana{
 			afficherPlateau();
 			if (unTour(joueur)) {// fonction aGagne non implemente
 				finDuJeu = joueur;
+				break;
 			}
 			joueur = cpt%2 + 1;
 			cpt++;
@@ -308,8 +284,8 @@ class Gymkhana{
 	}
 
 	public void afficherPlateau(){
-		System.out.println("le joueur 1 est blanc");
-		System.out.println("le joueur 2 est rouge");
+		System.out.println("le joueur 1 est rouge");
+		System.out.println("le joueur 2 est blanc");
 		System.out.print("    ");
 		for (int i = 0;i <taille ;i++ ) {
 			System.out.print(i + "   ");
@@ -322,7 +298,10 @@ class Gymkhana{
 				System.out.print(i + ": ");
 			}
 			for (int j = 0;j <taille;j++ ) {
+
+				// a supprimer
 				System.out.print(plateau[i][j].toString() + " / ");
+				//System.out.print(plateau[i][j].getIDClasseConnexite() + " / ");
 			}
 			System.out.println(" ");
 		}
@@ -334,14 +313,34 @@ class Gymkhana{
 													Fonctions utilitaires
 	---------------------------------------------------------------------------------------------------------------------------
 	*/
-	public void jointureClassesConnexite(){
+	public ClassesConnexite jointureClassesConnexite(Arete monArete){
+		//retourne la classe de connexité choisies.
+		ClassesConnexite classeTmp;
+		ClassesConnexite classeAGarder;
+
+		//fonction qui rejoint les classes de connexité des noeuds d'une arete
+		if (monArete.getCl1().getID() < monArete.getCl2().getID() ){// la classe avec le plus petit id doit rester
+ 			classeTmp = monArete.getCl1();
+			classeAGarder = monArete.getCl2();
+		}else{
+			classeTmp = monArete.getCl2();
+			classeAGarder = monArete.getCl1();
+		}
+
+		classeAGarder.changerToutesLesCases(classeTmp);
+		classeTmp.vider();
+
+		mesClassesConnexites.remove(classeTmp);
+
+
+		return classeAGarder;
 		
 	}
 
 	public Case[] trouverVoisins(int joueur, int x, int y){
 		//renvoies les voisins de l'arete jouée au coordonnées x, y
 		Case[] mesNoeuds = new Case[2];
-		if (joueur == 1) {
+		if (joueur == 2) {
 			if (x%2==1) {
 				mesNoeuds[0] = plateau[x][y+1];
 				mesNoeuds[1] = plateau[x][y-1];
@@ -383,15 +382,6 @@ class Gymkhana{
 		return donnes;
 	}
 
-
-
-	/*
-	---------------------------------------------------------------------------------------------------------------------------
-													Fonctions a réaliser
-	---------------------------------------------------------------------------------------------------------------------------
-	*/
-
-
 	/*
 	---------------------------------------------------------------------------------------------------------------------------
 													Fonction main
@@ -401,13 +391,6 @@ class Gymkhana{
 		System.out.println("test !");
 
 		Gymkhana maPartie = new Gymkhana();
-		//maPartie.jeu();
 		maPartie.jeu();
 	}
 }
-
-//liste de choses a faire :
-// fonction aGagne
-//refaire modele, faire une classe pion (nos Cases) et une classe LesPetitsCarresRougesEtBlancs (les noeuds)
-//fonction afficherArete
-//refaire la verif des donnees
