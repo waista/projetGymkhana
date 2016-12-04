@@ -12,6 +12,10 @@ class ClassesConnexite{
 		numClasse = id;
 	}
 
+	public int getID(){
+		return numClasse;
+	}
+
 	public void rajoutCase(Case maCase){
 		mesCases.add(maCase);
 	}
@@ -20,6 +24,23 @@ class ClassesConnexite{
 		mesCases.remove(maCase);
 	}
 
+	public void changerToutesLesCases(ClassesConnexite nouvelleClasse){
+		for (int i = 0; i < mesCases.size() ;i++ ) {
+			mesCases.get(i).setClasse(nouvelleClasse);
+		}
+	}
+
+	public void vider(){
+		mesCases.clear();
+	}
+
+	public void afficherCases(){
+		System.out.println(mesCases.size());
+		for (int i = 0; i < mesCases.size() ;i++ ) {
+
+			System.out.println(mesCases.get(i));
+		}
+	}
 
 
 }
