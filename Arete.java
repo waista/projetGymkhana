@@ -62,6 +62,15 @@ class Arete extends Case{
 		return false;
 	}
 
+	public ClassesConnexite getCl1(){
+		return noeud1.getClasseConnexite();
+
+	}
+
+	public ClassesConnexite getCl2(){
+		return noeud2.getClasseConnexite();
+	}
+
 
 
 }
